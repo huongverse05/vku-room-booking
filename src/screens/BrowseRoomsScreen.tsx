@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -61,16 +62,20 @@ export function BrowseRoomsScreen({ navigation }: BrowseRoomsScreenProps) {
     <View style={[styles.container, { paddingTop: Math.max(insets.top, 12) }]}>
       {/* Header Bar */}
       <View style={styles.header}>
-        <View>
-          <View style={styles.brandingRow}>
-            <View style={styles.vkuLogoBadge}>
-              <Text style={styles.vkuLogoText}>VKU</Text>
-            </View>
-            <Text style={styles.appName}>Room Booking</Text>
+        <View style={styles.brandingRow}>
+          <View style={styles.vkuLogoWrapper}>
+            <Image
+              source={require('../../assets/vku-logo.png')}
+              style={styles.vkuLogoImage}
+              resizeMode="contain"
+            />
           </View>
-          <Text style={styles.subGreeting}>
-            Hệ thống đặt phòng học & nghiên cứu VKU
-          </Text>
+          <View style={styles.titleColumn}>
+            <Text style={styles.appName}>VKU Room Booking</Text>
+            <Text style={styles.subGreeting}>
+              Hệ thống đặt phòng học & nghiên cứu
+            </Text>
+          </View>
         </View>
 
         <TouchableOpacity
@@ -200,29 +205,39 @@ const styles = StyleSheet.create({
   brandingRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: 10,
   },
-  vkuLogoBadge: {
-    backgroundColor: COLORS.vkuRed,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 6,
+  vkuLogoWrapper: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingHorizontal: 4,
+    paddingVertical: 2,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#0F172A',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 2,
   },
-  vkuLogoText: {
-    color: COLORS.white,
-    fontWeight: '900',
-    fontSize: 14,
-    letterSpacing: 1,
+  vkuLogoImage: {
+    width: 60,
+    height: 38,
+  },
+  titleColumn: {
+    justifyContent: 'center',
   },
   appName: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '800',
     color: COLORS.primary,
   },
   subGreeting: {
-    fontSize: 12,
+    fontSize: 11.5,
     color: COLORS.textSecondary,
-    marginTop: 2,
+    marginTop: 1,
   },
   notifBtn: {
     width: 40,

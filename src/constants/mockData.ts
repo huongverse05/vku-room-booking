@@ -1,11 +1,11 @@
 import { Room, UserProfile } from '../types';
 
 export const INITIAL_USER: UserProfile = {
-  studentId: '22IT089',
-  fullName: 'Nguyễn Văn An',
-  email: 'annv.22it@vku.udn.vn',
+  studentId: '23IT117',
+  fullName: 'Từ Thị Thanh Hương',
+  email: 'huongttt.23it@vku.udn.vn',
   faculty: 'Khoa Khoa học Máy tính',
-  major: 'Kỹ thuật Phần mềm (Software Engineering)',
+  major: 'Chuyên ngành Công nghệ phần mềm (song ngữ Nhật - Việt) (Kỹ sư)',
   academicYear: 'Khóa 2022 - 2027',
   avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
 };

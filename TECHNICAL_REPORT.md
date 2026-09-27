@@ -7,9 +7,9 @@
 **ĐỀ TÀI: XÂY DỰNG ỨNG DỤNG ĐẶT PHÒNG HỌC & NGHIÊN CỨU VKU (VKU ROOM BOOKING APP)**
 
 - **Giảng viên hướng dẫn:** TS. Nguyễn Thanh Tuấn
-- **Sinh viên thực hiện:** Nguyễn Văn An
-- **Mã số sinh viên (MSSV):** 22IT089
-- **Lớp sinh hoạt:** 22IT — Kỹ thuật Phần mềm
+- **Sinh viên thực hiện:** Từ Thị Thanh Hương
+- **Mã số sinh viên (MSSV):** 23IT117
+- **Lớp sinh hoạt:** 23JIT — Chuyên ngành Công nghệ phần mềm (song ngữ Nhật - Việt) (Kỹ sư)
 - **Thời gian hoàn thành:** Tuần 6 (Học kỳ II)
 
 ***

@@ -7,30 +7,13 @@ export interface BookingState {
   bookings: Booking[];
   addBooking: (booking: Booking) => void;
   cancelBooking: (id: string) => void;
-  clearAllBookings?: () => void;
+  clearAllBookings: () => void;
 }
 
 export const useBookingStore = create<BookingState>()(
   persist(
     (set) => ({
-      bookings: [
-        // Seed initial booking for a realistic demo
-        {
-          id: 'vku-bk-1001',
-          roomId: 'room-a202',
-          roomName: 'Phòng Hội thảo Smart Meeting A202',
-          building: 'Khu A',
-          floor: 'Tầng 2',
-          date: '2026-09-29',
-          timeSlot: '13:00 - 15:15 (Tiết 7-9)',
-          userName: 'Nguyễn Văn An',
-          studentId: '22IT089',
-          purpose: 'Báo cáo tiến độ đồ án tốt nghiệp Khóa 2022',
-          status: 'confirmed',
-          createdAt: new Date().toISOString(),
-          ticketCode: 'VKU-PASS-A202-99',
-        },
-      ],
+      bookings: [], // Sạch sẽ, không có dữ liệu test ban đầu
       addBooking: (b: Booking) =>
         set((s) => ({ bookings: [b, ...s.bookings] })),
       cancelBooking: (id: string) =>

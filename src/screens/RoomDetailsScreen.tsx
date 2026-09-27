@@ -41,21 +41,35 @@ export function RoomDetailsScreen({ route, navigation }: RoomDetailsProps) {
   // Zustand action selector (Slide 12 & 13)
   const addBooking = useBookingStore((s) => s.addBooking);
 
+  // Dynamic dates generator (Today, Tomorrow, and upcoming days)
+  const dates = React.useMemo(() => {
+    const list = [];
+    const daysOfWeek = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+    const now = new Date();
+    for (let i = 0; i < 4; i++) {
+      const d = new Date(now);
+      d.setDate(now.getDate() + i);
+      const iso = d.toISOString().split('T')[0];
+      const label =
+        i === 0
+          ? 'Hôm nay'
+          : i === 1
+          ? 'Ngày mai'
+          : `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+      const sub = daysOfWeek[d.getDay()];
+      list.push({ label, value: iso, sub });
+    }
+    return list;
+  }, []);
+
   // Form states
-  const [selectedDate, setSelectedDate] = useState<string>('2026-09-28');
+  const [selectedDate, setSelectedDate] = useState<string>(dates[0].value);
   const [selectedSlot, setSelectedSlot] = useState<string>(
     room.availableSlots[0] || TIME_SLOTS[0]
   );
-  const [purpose, setPurpose] = useState<string>('Học nhóm & Thuyết trình chuyên đề');
+  const [purpose, setPurpose] = useState<string>('');
   const [studentId, setStudentId] = useState<string>(INITIAL_USER.studentId);
   const [studentName, setStudentName] = useState<string>(INITIAL_USER.fullName);
-
-  const dates = [
-    { label: 'Hôm nay', value: '2026-09-28', sub: 'Thứ Hai' },
-    { label: 'Ngày mai', value: '2026-09-29', sub: 'Thứ Ba' },
-    { label: '30/09', value: '2026-09-30', sub: 'Thứ Tư' },
-    { label: '01/10', value: '2026-10-01', sub: 'Thứ Năm' },
-  ];
 
   const handleConfirmBooking = () => {
     if (!studentId.trim() || !studentName.trim()) {

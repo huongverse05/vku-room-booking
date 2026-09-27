@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Share,
+  Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { BookingConfirmationProps } from '../navigation/types';
@@ -34,7 +35,7 @@ export function BookingConfirmationScreen({
         title: `VKU Room Pass - ${booking.roomName}`,
         message: `[VKU Room Pass] Đã xác nhận phòng ${booking.roomName} (${booking.building}) vào ngày ${booking.date}, ca: ${booking.timeSlot}. Mã thẻ: ${booking.ticketCode}.`,
       });
-    } catch (e) {
+    } catch {
       // Ignored
     }
   };
@@ -72,12 +73,16 @@ export function BookingConfirmationScreen({
         <View style={styles.ticketCard}>
           {/* Ticket Header */}
           <View style={styles.ticketHeader}>
-            <View>
+            <View style={{ flex: 1, paddingRight: 8 }}>
               <Text style={styles.universityName}>TRƯỜNG ĐẠI HỌC CNTT & TRUYỀN THÔNG VIỆT - HÀN</Text>
               <Text style={styles.ticketType}>THẺ RA VÀO PHÒNG HỌC & NGHIÊN CỨU</Text>
             </View>
             <View style={styles.vkuLogoBox}>
-              <Text style={styles.vkuLogoText}>VKU</Text>
+              <Image
+                source={require('../../assets/vku-logo.png')}
+                style={styles.vkuLogoImage}
+                resizeMode="contain"
+              />
             </View>
           </View>
 
@@ -259,16 +264,18 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   vkuLogoBox: {
-    backgroundColor: COLORS.vkuRed,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 6,
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 4,
+    paddingVertical: 2,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  vkuLogoText: {
-    color: COLORS.white,
-    fontWeight: '900',
-    fontSize: 13,
-    letterSpacing: 1,
+  vkuLogoImage: {
+    width: 58,
+    height: 36,
   },
   ticketBody: {
     padding: 20,

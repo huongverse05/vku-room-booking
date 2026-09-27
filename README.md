@@ -2,7 +2,7 @@
 > **Môn học:** Phát triển Ứng dụng Di động Đa nền tảng (Cross-Platform Mobile App Development)  
 > **Giảng viên hướng dẫn:** TS. Nguyễn Thanh Tuấn  
 > **Khoa:** Khoa học Máy tính — Trường Đại học Công nghệ Thông tin & Truyền thông Việt - Hàn (VKU)  
-> **Họ và tên SV:** Nguyễn Văn An — **MSSV:** 22IT089 — **Lớp:** 22IT  
+> **Họ và tên SV:** Từ Thị Thanh Hương — **MSSV:** 23IT117 — **Lớp:** 23JIT  
 
 ---
 

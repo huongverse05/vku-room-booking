@@ -20,36 +20,18 @@ export function ProfileScreen({ navigation }: ProfileScreenProps) {
   const bookings = useBookingStore((s) => s.bookings);
   const activeCount = bookings.filter((b) => b.status === 'confirmed').length;
 
-  const handleResetData = () => {
+  const handleClearBookings = () => {
     Alert.alert(
-      'Khôi phục dữ liệu mẫu',
-      'Bạn có muốn xóa dữ liệu lưu tạm và nạp lại lịch mẫu ban đầu để quay video demo không?',
+      'Xóa dữ liệu đặt phòng',
+      'Bạn có chắc chắn muốn xóa toàn bộ lịch đặt phòng trên thiết bị này không?',
       [
         { text: 'Hủy', style: 'cancel' },
         {
-          text: 'Khôi phục',
+          text: 'Xóa sạch',
+          style: 'destructive',
           onPress: () => {
-            // Re-seed demo booking
-            useBookingStore.setState({
-              bookings: [
-                {
-                  id: 'vku-bk-1001',
-                  roomId: 'room-a202',
-                  roomName: 'Phòng Hội thảo Smart Meeting A202',
-                  building: 'Khu A',
-                  floor: 'Tầng 2',
-                  date: '2026-09-29',
-                  timeSlot: '13:00 - 15:15 (Tiết 7-9)',
-                  userName: INITIAL_USER.fullName,
-                  studentId: INITIAL_USER.studentId,
-                  purpose: 'Báo cáo tiến độ đồ án tốt nghiệp Khóa 2022',
-                  status: 'confirmed',
-                  createdAt: new Date().toISOString(),
-                  ticketCode: 'VKU-PASS-A202-99',
-                },
-              ],
-            });
-            Alert.alert('Thành công', 'Đã nạp lại dữ liệu mẫu sẵn sàng demo!');
+            useBookingStore.getState().clearAllBookings();
+            Alert.alert('Thành công', 'Đã làm sạch toàn bộ dữ liệu đặt phòng!');
           },
         },
       ]
@@ -60,8 +42,17 @@ export function ProfileScreen({ navigation }: ProfileScreenProps) {
     <View style={[styles.container, { paddingTop: Math.max(insets.top, 12) }]}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.title}>Hồ Sơ Sinh Viên</Text>
-        <Text style={styles.subtitle}>VKU Student Campus Account</Text>
+        <View>
+          <Text style={styles.title}>Hồ Sơ Sinh Viên</Text>
+          <Text style={styles.subtitle}>VKU Student Campus Account</Text>
+        </View>
+        <View style={styles.headerLogoWrapper}>
+          <Image
+            source={require('../../assets/vku-logo.png')}
+            style={styles.headerLogoImage}
+            resizeMode="contain"
+          />
+        </View>
       </View>
 
       <ScrollView
@@ -173,11 +164,11 @@ export function ProfileScreen({ navigation }: ProfileScreenProps) {
 
           <TouchableOpacity
             style={styles.menuRow}
-            onPress={handleResetData}
+            onPress={handleClearBookings}
           >
             <View style={styles.menuLeft}>
-              <Ionicons name="refresh-circle-outline" size={20} color={COLORS.accent} />
-              <Text style={styles.menuLabel}>Khôi phục dữ liệu demo mẫu</Text>
+              <Ionicons name="trash-outline" size={20} color={COLORS.danger} />
+              <Text style={[styles.menuLabel, { color: COLORS.danger }]}>Xóa toàn bộ lịch đặt phòng</Text>
             </View>
             <Ionicons name="chevron-forward" size={18} color={COLORS.textMuted} />
           </TouchableOpacity>
@@ -193,8 +184,30 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
   },
   header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingHorizontal: 16,
     paddingBottom: 12,
+  },
+  headerLogoWrapper: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingHorizontal: 4,
+    paddingVertical: 2,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#0F172A',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  headerLogoImage: {
+    width: 54,
+    height: 34,
   },
   title: {
     fontSize: 22,

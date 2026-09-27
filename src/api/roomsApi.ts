@@ -16,7 +16,7 @@ export async function fetchRoomsApi(building?: string): Promise<Room[]> {
       return (await res.json()) as Room[];
     }
     throw new Error('API server returned ' + res.status);
-  } catch (err) {
+  } catch {
     // Graceful fallback to rich local VKU rooms data
     // Simulate slight network latency to show TanStack Query caching & pull-to-refresh
     await new Promise((resolve) => setTimeout(resolve, 350));
