@@ -96,33 +96,6 @@ npx expo start
 
 ---
 
-## 📹 Kịch bản Quay Video Demo (2–3 Phút)
-
-Khi quay video nộp bài theo yêu cầu của Thầy (Slide 28):
-1. **0:00 - 0:30 (Màn hình Browse & Search):**
-   - Giới thiệu màn hình chính "Khám phá phòng VKU".
-   - Kéo vuốt xuống để kích hoạt **Pull-to-refresh** (TanStack Query refetch).
-   - Bấm chuyển các chip lọc: **Khu A**, **Khu V**, **Khu K**, **Thư viện**.
-   - Thao tác thanh tìm kiếm: nhập "Lab", "4K", "AI".
-2. **0:30 - 1:15 (Chi tiết phòng & Đặt lịch):**
-   - Bấm vào một phòng (ví dụ: *Phòng Lab AI & Data Science V204*).
-   - Quan sát hiệu ứng chuyển màn hình **Stack Push**.
-   - Chọn ngày, chọn ca học trống (Tiết 4-6), nhập mục đích.
-   - Nhấn giữ nút **"Xác nhận Đặt phòng"** để thể hiện hiệu ứng lò xo **Reanimated withSpring**.
-3. **1:15 - 1:50 (Màn hình Modal Thẻ ra vào phòng):**
-   - Màn hình **Booking Confirmation** trượt lên từ dưới dạng **Modal Presentation**.
-   - Show chi tiết E-Ticket chuẩn thương hiệu VKU, mã thẻ và QR Code.
-   - Bấm nút "Chia sẻ thẻ" hoặc "Xem danh sách đặt".
-4. **1:50 - 2:45 (Cử chỉ Swipe-to-Cancel & Zustand Persist):**
-   - Chuyển sang Tab **"Lịch đặt phòng"**.
-   - Giải thích dữ liệu lấy từ **Zustand Store (AsyncStorage)**.
-   - Thực hiện cử chỉ vuốt thẻ sang trái (**React Native Gesture Handler**) để kích hoạt tính năng **Hủy phòng**.
-   - Chuyển sang Tab "Đã hủy / Lịch sử" để kiểm tra trạng thái cập nhật tức thì.
-5. **2:45 - 3:00 (Tab Hồ sơ & Kết thúc):**
-   - Chuyển sang Tab **Cá nhân** hiển thị thông tin sinh viên và nút Khôi phục dữ liệu demo.
-
----
-
 ## 📁 Cấu trúc Thư mục Dự án
 
 ```text
@@ -162,6 +135,3 @@ vku-room-booking/
 ├── TECHNICAL_REPORT.md              # Báo cáo kỹ thuật 2-4 trang nộp giảng viên
 └── package.json
 ```
-
----
-*Dự án hoàn thành phục vụ đánh giá Mini-Project 2 môn Phát triển Ứng dụng Di động Đa nền tảng tại VKU.*

@@ -9,7 +9,7 @@
 ## 1. GENERAL INFORMATION & DELIVERABLE LINKS
 * **Team Members:**
   1. Tu Thi Thanh Huong — Student ID: 23IT117 — Class: 23JIT (Software Engineering) — Role: Full-stack Mobile Development (React Native/Expo, Type-Safe React Navigation, Zustand Offline Store, TanStack Query Cache, Reanimated 3 & Gesture Handler) — Contribution: 100%
-* **🔗 Live Demo / Expo Metro URL:** [http://localhost:8081](http://localhost:8081) *(Accessible via Expo Go QR scan on Metro Bundler or Web view via `npx expo start --web`)*
+* **🔗 Live Demo URL:** [https://vku-room-booking-sigma.vercel.app](https://vku-room-booking-sigma.vercel.app) *(Accessible via mobile browser or local Metro Bundler `http://localhost:8081`)*
 * **💻 GitHub Repository:** [https://github.com/huongverse05/vku-room-booking](https://github.com/huongverse05/vku-room-booking)
 
 ---
@@ -133,81 +133,26 @@ vku-room-booking/
 ### Figure 1: Browse Rooms & Building Filter Screen
 * **Description:** Displays the primary catalog screen featuring the VKU Navy header, instant search bar, horizontal building filter chips (Khu A, Khu V, Khu K, Thư viện), and animated room cards loaded via TanStack Query. Supports native pull-to-refresh.
 * **Demonstrated Capabilities:** Server-state caching, instant query filtering, layout animations (`FadeInDown.springify()`).
-```
-+---------------------------------------------------+
-|  VKU ROOM BOOKING               [Khu A] [Khu V]   |
-|  [Q Search rooms, labs, equipment...]             |
-|                                                   |
-|  +---------------------------------------------+  |
-|  | [Lab AI & Data Science V204]    [Available] |  |
-|  | Khu V - Tang 2 | 45 cho | 4K, May lanh      |  |
-|  +---------------------------------------------+  |
-|  +---------------------------------------------+  |
-|  | [Hoi thao Quoc te A101]         [Available] |  |
-|  | Khu A - Tang 1 | 120 cho | Sound, Stage     |  |
-|  +---------------------------------------------+  |
-|  [ Browse ]          [ Bookings ]       [ Profile ]|
-+---------------------------------------------------+
-```
-> *(Insert screenshot: `assets/screenshots/01_browse_rooms.png`)*
+
+![Figure 1: Browse Rooms & Building Filter Screen](./assets/screenshots/01_browse_rooms.jpg)
 
 ### Figure 2: Room Details & Booking Reservation Form
 * **Description:** Detail view accessed via native stack push. Presents high-resolution room imagery, equipment badges, dynamic date selector, and time slot buttons (Tiết 1-3, 4-6, 7-9, 10-12, Tối). Features an animated elastic booking button.
 * **Demonstrated Capabilities:** Stack navigation parameter passing (`roomId`, `roomName`), validation logic, Reanimated spring physics (`withSpring`).
-```
-+---------------------------------------------------+
-| < Back      Room Details & Reservation            |
-| +-----------------------------------------------+ |
-| | [ Room Hero Image - Lab AI V204 ]             | |
-| +-----------------------------------------------+ |
-| Date: [ Today (27/09) ] [ Tomorrow ] [ Select ]   |
-| Time Slots:                                       |
-|  [X] Tiet 1-3 (07:00 - 09:15)                     |
-|  [ ] Tiet 4-6 (09:30 - 11:45)                     |
-| Purpose: [ Nghien cuu Datathon 2026            ]  |
-|                                                   |
-|        [ >>> XAC NHAN DAT PHONG <<< ]             |
-+---------------------------------------------------+
-```
-> *(Insert screenshot: `assets/screenshots/02_room_details.png`)*
+
+![Figure 2: Room Details & Booking Reservation Form](./assets/screenshots/02_room_details.jpg)
 
 ### Figure 3: Digital E-Ticket & Confirmation Modal Pass
-* **Description:** Slide-up modal presentation styled as an airline boarding pass. Contains verified student credentials, room code, reservation timestamp, unique booking ID (`VKU-KhuA-8291`), scannable QR matrix, and native OS Share trigger.
+* **Description:** Slide-up modal presentation styled as an airline boarding pass. Contains verified student credentials, room code, reservation timestamp, unique booking ID (`VKU-KhuA-8212`), scannable QR matrix, and native OS Share trigger.
 * **Demonstrated Capabilities:** Modal presentation mode, Zustand persistent state dispatch, QR code rendering, OS Share API.
-```
-+---------------------------------------------------+
-| --- SWIPE DOWN OR CLOSE ---                       |
-| /===============================================\ |
-| |   VKU DIGITAL PASS - THE RA VAO PHONG         | |
-| |   Room: Lab AI & Data Science - V204          | |
-| |   Time: Tiet 1-3 (27/09/2026)                 | |
-| |   Holder: Tu Thi Thanh Huong (23IT117)        | |
-| |   -----------------------------------------   | |
-| |        [ QR CODE MATRIX FOR CHECK-IN ]        | |
-| |        ID: VKU-V204-9482                      | |
-| \===============================================/ |
-| [ Share Ticket ]               [ View My Bookings ]|
-+---------------------------------------------------+
-```
-> *(Insert screenshot: `assets/screenshots/03_booking_pass.png`)*
 
-### Figure 4: My Bookings Screen with Gesture-Driven Swipe-to-Cancel
-* **Description:** Management view displaying active and historical reservations. Users can perform a horizontal pan gesture on any active card to reveal a red deletion tray and confirm cancellation.
-* **Demonstrated Capabilities:** Pan Gesture Handler integration, thread-safe UI-to-JS state updates (`runOnJS`), Zustand offline persistence.
-```
-+---------------------------------------------------+
-|  MY BOOKINGS                  [ Active (1) ] Past |
-|                                                   |
-|  <<< SWIPE LEFT TO CANCEL <<<                     |
-|  +-----------------------------+ [ TRASH BIN ]    |
-|  | Lab AI V204 - Tiet 1-3      | [ CANCEL    ]    |
-|  | 27/09/2026 | ID: VKU-9482   | [ ACTION    ]    |
-|  +-----------------------------+                  |
-|                                                   |
-|  [ Browse ]          [ Bookings ]       [ Profile ]|
-+---------------------------------------------------+
-```
-> *(Insert screenshot: `assets/screenshots/04_swipe_to_cancel.png`)*
+![Figure 3: Digital E-Ticket & Confirmation Modal Pass](./assets/screenshots/03_booking_pass.jpg)
+
+### Figure 4: My Bookings Screen with Cancellation Modal & Swipe-to-Cancel
+* **Description:** Management view displaying active reservations. Users can perform a horizontal swipe gesture or tap "Hủy phòng" to trigger the cross-platform confirmation modal with complete booking summary, protecting against accidental deletions.
+* **Demonstrated Capabilities:** Cross-platform React Native Modal, Pan Gesture Handler integration, thread-safe UI-to-JS state updates (`runOnJS`), Zustand offline persistence.
+
+![Figure 4: My Bookings Screen with Cancellation Modal](./assets/screenshots/04_cancel_modal.jpg)
 
 ---
 
