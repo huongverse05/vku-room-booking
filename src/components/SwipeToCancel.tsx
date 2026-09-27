@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
@@ -25,17 +25,22 @@ export function SwipeToCancel({
 }: SwipeToCancelProps) {
   const translateX = useSharedValue(0);
 
+  const handleTriggerCancel = () => {
+    onCancel(bookingId);
+  };
+
   const pan = Gesture.Pan()
     .enabled(enabled)
-    .activeOffsetX([-10, 10])
+    .activeOffsetX([-15, 15])
+    .failOffsetY([-10, 10])
     .onUpdate((e) => {
-      // Only allow dragging to the left (negative translationX)
-      translateX.value = Math.min(0, e.translationX);
+      // Allow dragging to the left up to -140px
+      translateX.value = Math.min(0, Math.max(e.translationX, -140));
     })
     .onEnd((e) => {
-      // Slide 26: if (e.translationX < -120) runOnJS(onCancel)(bookingId);
-      if (e.translationX < -120) {
-        runOnJS(onCancel)(bookingId);
+      // Trigger cancel when swiped past -60px (responsive threshold)
+      if (e.translationX < -60) {
+        runOnJS(handleTriggerCancel)();
       }
       translateX.value = withSpring(0);
     });
@@ -50,13 +55,17 @@ export function SwipeToCancel({
 
   return (
     <View style={styles.container}>
-      {/* Background action revealed on swipe */}
-      <View style={styles.actionBackground}>
+      {/* Background action revealed on swipe (also directly tappable) */}
+      <TouchableOpacity
+        style={styles.actionBackground}
+        onPress={handleTriggerCancel}
+        activeOpacity={0.85}
+      >
         <View style={styles.actionContent}>
           <Ionicons name="trash-outline" size={24} color={COLORS.white} />
-          <Text style={styles.actionText}>Hủy đặt phòng</Text>
+          <Text style={styles.actionText}>Hủy phòng</Text>
         </View>
-      </View>
+      </TouchableOpacity>
 
       {/* Swipeable foreground card */}
       <GestureDetector gesture={pan}>

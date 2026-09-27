@@ -21,6 +21,17 @@ export function ProfileScreen({ navigation }: ProfileScreenProps) {
   const activeCount = bookings.filter((b) => b.status === 'confirmed').length;
 
   const handleClearBookings = () => {
+    if (typeof window !== 'undefined' && window.confirm) {
+      const confirmed = window.confirm(
+        'Xóa dữ liệu đặt phòng:\nBạn có chắc chắn muốn xóa toàn bộ lịch đặt phòng trên thiết bị này không?'
+      );
+      if (confirmed) {
+        useBookingStore.getState().clearAllBookings();
+        if (window.alert) window.alert('Đã làm sạch toàn bộ dữ liệu đặt phòng!');
+      }
+      return;
+    }
+
     Alert.alert(
       'Xóa dữ liệu đặt phòng',
       'Bạn có chắc chắn muốn xóa toàn bộ lịch đặt phòng trên thiết bị này không?',

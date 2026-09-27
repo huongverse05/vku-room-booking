@@ -109,9 +109,11 @@ export function BookingCard({
             <TouchableOpacity
               style={styles.cancelBtn}
               onPress={onCancel}
-              activeOpacity={0.8}
+              activeOpacity={0.7}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             >
-              <Text style={styles.cancelBtnText}>Hủy</Text>
+              <Ionicons name="trash-outline" size={13} color={COLORS.danger} />
+              <Text style={styles.cancelBtnText}>Hủy phòng</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -282,14 +284,19 @@ const styles = StyleSheet.create({
     color: COLORS.primary,
   },
   cancelBtn: {
-    paddingHorizontal: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 8,
-    backgroundColor: COLORS.dangerBg,
+    backgroundColor: '#FEE2E2',
+    borderWidth: 1,
+    borderColor: '#FECACA',
+    gap: 4,
   },
   cancelBtnText: {
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: '700',
     color: COLORS.danger,
   },
 });
